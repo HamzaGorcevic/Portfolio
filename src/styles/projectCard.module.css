@@ -1,134 +1,143 @@
+@import './colors.css';
+
 .card {
-    background-color: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensure card takes full height */
-  }
-  
-  .card:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
-  }
-  
+  background: var(--surface);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cardImageContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 60%;
+  overflow: hidden;
+}
+
+.cardImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.noImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.cardDetails {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: var(--surface);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cardTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech {
+  background: var(--background);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  transition: all var(--transition-normal);
+}
+
+.tech:hover {
+  background: var(--primary-light);
+  color: var(--surface);
+}
+
+.cardLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.cardLink {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  transition: all var(--transition-normal);
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: var(--background);
+}
+
+.cardLink:hover {
+  color: var(--surface);
+  background: var(--gradient-1);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
   .cardImageContainer {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Adjusted image height */
-    overflow: hidden;
-  }
-  
-  .cardImage {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    display: block;
-    transition: transform 0.5s ease; /* Image zoom on hover */
-  }
-  
-  .card:hover .cardImage {
-    transform: scale(1.05);
-  }
-  
-  .noImage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: #f0f0f0;
-    color: #666;
-    font-size: 1rem;
+    padding-top: 75%;
   }
   
   .cardDetails {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1; /* Take remaining space */
+    padding: 1rem;
   }
   
   .cardTitle {
-    font-size: 1.75rem; /* Larger title */
-    margin-bottom: 0.75rem;
-    color: #333;
+    font-size: 1.25rem;
   }
   
   .cardDescription {
-    font-size: 1.1rem; /* Slightly larger description */
-    color: #666;
-    margin-bottom: 1.25rem;
-    flex: 1; /* Push meta to bottom */
+    font-size: 0.875rem;
   }
-  
-  .cardMeta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .cardTech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .tech {
-    background-color: #e0e0e0;
-    color: #333;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.85rem;
-  }
-  
-  .cardLinks {
-    display: flex;
-    gap: 0.75rem;
-  }
-  
-  .cardLink {
-    color: #333;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-  }
-  
-  .cardLink:hover {
-    color: #0070f3;
-  }
-  .cardIframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-  
-  /* Ensure the container has a fixed aspect ratio */
-  .cardImageContainer {
-    position: relative;
-    width: 100%;
-    padding-top: 66.67%; /* 400/600 aspect ratio */
-    overflow: hidden;
-  }
-  
-  .cardIframe,
-  .noImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .noImage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    color: #666;
-    font-size: 1rem;
-  }
+}

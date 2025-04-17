@@ -18,7 +18,7 @@ const Hero = () => {
       <p className={styles.title}>Full Stack Developer</p>
       <div className={styles.links}>
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/HamzaGorcevic"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.link}
@@ -27,7 +27,7 @@ const Hero = () => {
           GitHub
         </a>
         <a
-          href="https://www.linkedin.com/in/yourusername"
+          href="https://www.linkedin.com/in/hamza-gor%C4%8Devi%C4%87-112951246/"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.link}

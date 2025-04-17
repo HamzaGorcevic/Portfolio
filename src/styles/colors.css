@@ -1,0 +1,30 @@
+:root {
+    /* Main colors */
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    
+    /* Neutral colors */
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    
+    /* Accent colors */
+    --accent-1: #8b5cf6;
+    --accent-2: #ec4899;
+    
+    /* Gradients */
+    --gradient-1: linear-gradient(135deg, var(--primary), var(--accent-1));
+    --gradient-2: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+  }

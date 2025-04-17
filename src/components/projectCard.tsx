@@ -1,21 +1,19 @@
 import React from 'react';
 import styles from '../styles/projectCard.module.css';
+import { Github, ExternalLink } from 'lucide-react';
 import { Project } from '@/types/project';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
-const ProjectCard = ({ project }: { project: Project }) => {
+
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardImageContainer}>
-        {project.liveUrl ? (
-          <iframe
-            src={project.liveUrl}
-            title={project.title}
-            className={styles.cardIframe}
-            width="600"
-            height="400"
-            frameBorder="0"
-            sandbox="allow-scripts allow-same-origin"
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className={styles.cardImage}
+            loading="lazy"
           />
         ) : (
           <div className={styles.noImage}>No Preview Available</div>
@@ -27,7 +25,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
         <div className={styles.cardMeta}>
           <div className={styles.cardTech}>
             {project.technologies.map((tech) => (
-              <span key={tech} className={styles.tech}>{tech}</span>
+              <span key={tech} className={styles.tech}>
+                {tech}
+              </span>
             ))}
           </div>
           <div className={styles.cardLinks}>
@@ -36,9 +36,10 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.cardurl}
+                className={styles.cardLink}
+                aria-label="View GitHub Repository"
               >
-                <FaGithub />
+                <Github size={20} />
               </a>
             )}
             {project.liveUrl && (
@@ -47,8 +48,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.cardLink}
+                aria-label="View Live Project"
               >
-                <FaExternalLinkAlt />
+                <ExternalLink size={20} />
               </a>
             )}
           </div>
