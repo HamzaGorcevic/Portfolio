@@ -1,0 +1,88 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.imageContainer {
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem; /* Increased spacing */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  animation: fadeIn 1s ease-in-out;
+}
+
+.profileImage {
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem; /* Adjusted spacing */
+  animation: slideInDown 1s ease-in-out;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1.5rem; /* Increased spacing */
+  animation: slideInUp 1s ease-in-out;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem; /* Increased spacing */
+  animation: fadeIn 1s ease-in-out;
+}
+
+.link {
+  color: #333; /* Darker color for links */
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #0070f3;
+}
+
+.icon {
+  font-size: 1.5rem; /* Icon size */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
