@@ -7,9 +7,9 @@ import ProjectTable from './projectTable';
 
 const AdminPage = ({projects}:{projects:Project[]}) => {
   const [authorized, setAuthorized] = useState(false);
-  const [selectedProject,setSelectedProject] = useState<Project |null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [password, setPassword] = useState('');
-  const [isOpen,setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   
   const checkPassword = () => {
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASS) {
@@ -39,15 +39,14 @@ const AdminPage = ({projects}:{projects:Project[]}) => {
     );
   }
   
-  const onDelete = async (id:number) => {
+  const onDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
-        const response = await fetch(`/api/projects/${id}`, {
+        const response = await fetch(`http://localhost:3000/api/projects/${id}`, {
           method: 'DELETE',
         });
         
         if (response.ok) {
-          // Refresh the page or update the projects list
           window.location.reload();
         } else {
           alert('Failed to delete project');
@@ -59,7 +58,7 @@ const AdminPage = ({projects}:{projects:Project[]}) => {
     }
   };
   
-  const onEdit = (project:Project) => {
+  const onEdit = (project: Project) => {
     setIsOpen(true);
     setSelectedProject(project);
   };
