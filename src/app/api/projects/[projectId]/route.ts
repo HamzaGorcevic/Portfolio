@@ -1,8 +1,7 @@
-// app/api/projects/[projectId]/route.ts
+// src/app/api/projects/[projectId]/route.ts
 import { PrismaClient } from "@/generated/prisma";
 import { BlobServiceClient } from "@azure/storage-blob";
-import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { v4 } from "uuid";
 
 const prisma = new PrismaClient();
@@ -19,9 +18,9 @@ let blocContainer = blobServiceClient.getContainerClient(containerName);
 
 export async function PUT(
     req: NextRequest,
-    context : { params: { projectId: string } }
+    { params }: { params: { projectId: string } }
 ) {
-    const {projectId }=await context.params;
+    const { projectId } = params;
 
     if (!projectId) {
         return NextResponse.json({ error: "Project ID is required" }, { status: 400 });
@@ -34,7 +33,6 @@ export async function PUT(
     const liveUrl = formData.get('liveUrl') as string;
     const imageFile = formData.get('image') as File;
     const technologies = formData.get('technologies') as string;
-    console.log(formData);
 
     // Fetch existing project to keep the current image if no new one is uploaded
     const project = await prisma.project.findFirst({
@@ -81,10 +79,10 @@ export async function PUT(
 
 export async function DELETE(
     req: NextRequest,
-    context : { params: { projectId: string } }
+    { params }: { params: { projectId: string } }
 ) {
-    const {projectId}= await context.params;
-    
+    const { projectId } = params;
+
     if (!projectId) {
         return NextResponse.json({ error: "Project ID is required" }, { status: 400 });
     }
@@ -106,10 +104,9 @@ export async function DELETE(
             );
             try{
                 await blockBlobClient.delete();
-
             }catch(error){
                 console.log(error);
-                
+
             }
         }
 
@@ -121,7 +118,7 @@ export async function DELETE(
         return NextResponse.json({ message: "Project deleted successfully" }, { status: 200 });
     } catch (err) {
         console.log(err);
-        
+
         return NextResponse.json({ error: "Failed to delete project" }, { status: 500 });
     }
 }

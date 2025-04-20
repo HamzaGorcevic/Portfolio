@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hamza Gorcevci",
+  title: "Hamza Gorcevic",
   description: "Portfolio about my works",
 };
 
