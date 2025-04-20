@@ -4,7 +4,7 @@ import React from 'react'
 
 const  Page = async () => {
   const baseUrl = getBaseUrl();
-    const req = await fetch(`${baseUrl}/api/projects`);
+    const req = await fetch(`${baseUrl}/api/projects`,{ cache: 'no-store' });
   const projects = await req.json(); 
   return (
     <AdminPage projects={projects}/>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { getBaseUrl } from '@/lib/baseUrl';
 const Page = async () => {
     const baseUrl = getBaseUrl();
-    const req = await fetch(`${baseUrl}/api/projects`);
+    const req = await fetch(`${baseUrl}/api/projects`,{ cache: 'no-store' });
     const projects = await req.json(); 
   return (
             
