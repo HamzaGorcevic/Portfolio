@@ -16,9 +16,13 @@ if (!connectionString || !containerName) {
 const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
 let blocContainer = blobServiceClient.getContainerClient(containerName);
 
+interface Params {
+    projectId: string;
+}
+
 export async function PUT(
     req: NextRequest,
-    { params }: { params: { projectId: string } }
+    { params }: { params: Params }
 ) {
     const { projectId } = params;
 
@@ -79,7 +83,7 @@ export async function PUT(
 
 export async function DELETE(
     req: NextRequest,
-    { params }: { params: { projectId: string } }
+    { params }: { params: Params }
 ) {
     const { projectId } = params;
 
@@ -106,7 +110,6 @@ export async function DELETE(
                 await blockBlobClient.delete();
             }catch(error){
                 console.log(error);
-
             }
         }
 
@@ -118,7 +121,6 @@ export async function DELETE(
         return NextResponse.json({ message: "Project deleted successfully" }, { status: 200 });
     } catch (err) {
         console.log(err);
-
         return NextResponse.json({ error: "Failed to delete project" }, { status: 500 });
     }
 }
