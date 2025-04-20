@@ -26,7 +26,8 @@ export async function POST(req:NextRequest) {
     const description = formData.get('description') as string;
     const githubUrl = formData.get('githubUrl') as string;
     const liveUrl = formData.get('liveUrl') as string;
-    const imageFile = formData.get('image') as File
+    const imageFile = formData.get('image') as File 
+    const technologies = formData.get('technologies') as string;
 
     let image = '';
     if (imageFile){
@@ -46,6 +47,7 @@ export async function POST(req:NextRequest) {
             githubUrl,
             liveUrl,
             image,
+            technologies
         }
         });
         return NextResponse.json(newProject,{status:201});

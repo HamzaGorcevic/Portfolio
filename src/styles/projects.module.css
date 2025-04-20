@@ -1,0 +1,49 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0A0E17 0%, #0F1726 100%);
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(1px 1px at 25px 5px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)),
+      radial-gradient(1px 1px at 50px 25px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)),
+      radial-gradient(1px 1px at 125px 20px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)),
+      radial-gradient(2px 2px at 50px 75px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .homeButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    z-index: 2;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .homeButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  

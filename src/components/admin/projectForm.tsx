@@ -8,7 +8,7 @@ const ProjectForm = ({projectData=null, isOpen, onClose}:{projectData?:Project|n
     const [newProject, setNewProject] = useState<Omit<Project, 'id'>>({
         title: '',
         description: '',
-        technologies: [],
+        technologies: '',
         githubUrl: '',
         liveUrl: '',
         image: null,
@@ -34,6 +34,7 @@ const ProjectForm = ({projectData=null, isOpen, onClose}:{projectData?:Project|n
             formData.append("title", newProject.title);
             formData.append("description", newProject.description);
             formData.append("githubUrl", newProject.githubUrl);
+            formData.append('technologies',newProject.technologies);
             if (newProject.image) {
                 formData.append('image', newProject.image);
             }
@@ -54,17 +55,15 @@ const ProjectForm = ({projectData=null, isOpen, onClose}:{projectData?:Project|n
             if (response.ok) {
                 setProjectMessage('Project saved successfully!');
                 setMessageType('success');
-                setTimeout(() => {
-                    onClose();
-                    setNewProject({
+                onClose();
+                setNewProject({
                         title: '',
                         description: '',
-                        technologies: [],
+                        technologies:'',
                         githubUrl: '',
                         liveUrl: '',
                         image: null,
                     });
-                }, 2000);
             } else {
                 setProjectMessage(`Error saving project: ${data.message || 'Something went wrong.'}`);
                 setMessageType('error');
@@ -84,11 +83,7 @@ const ProjectForm = ({projectData=null, isOpen, onClose}:{projectData?:Project|n
                 ...prevState,
                 image: files[0],
             }));
-        } else if (name === 'technologies') {
-            setNewProject(prevState => ({
-                ...prevState,
-                [name]: value.split(',').map((tech: string) => tech.trim()),
-            }));
+        
         } else {
             setNewProject(prevState => ({
                 ...prevState,
@@ -146,7 +141,7 @@ const ProjectForm = ({projectData=null, isOpen, onClose}:{projectData?:Project|n
                                 type="text"
                                 id="technologies"
                                 name="technologies"
-                                value={newProject.technologies.join(', ')}
+                                value={newProject.technologies}
                                 onChange={handleInputChange}
                                 className={styles.input}
                                 required

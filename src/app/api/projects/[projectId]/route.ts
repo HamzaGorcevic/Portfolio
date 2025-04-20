@@ -33,6 +33,8 @@ export async function PUT(
     const githubUrl = formData.get('githubUrl') as string;
     const liveUrl = formData.get('liveUrl') as string;
     const imageFile = formData.get('image') as File;
+    const technologies = formData.get('technologies') as string;
+    console.log(formData);
 
     // Fetch existing project to keep the current image if no new one is uploaded
     const project = await prisma.project.findFirst({
@@ -46,7 +48,7 @@ export async function PUT(
 
     let image = project.image;  // Access the 'image' property of the project
 
-    if (imageFile) {
+    if (imageFile && typeof(imageFile) != 'string') {
         // If a new image is uploaded, generate a new image URL
         const fileName = `${v4()}.${imageFile.name.split(".").pop()}`;
         const blockBlobClient = blocContainer.getBlockBlobClient(fileName);
@@ -67,6 +69,7 @@ export async function PUT(
                 githubUrl,
                 liveUrl,
                 image,
+                technologies
             },
         });
 

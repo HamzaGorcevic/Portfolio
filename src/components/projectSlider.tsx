@@ -3,7 +3,6 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import styles from '../styles/projectSlider.module.css';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -12,18 +11,17 @@ import 'swiper/css/navigation';
 import ProjectCard from './projectCard';
 import { Project } from '@/types/project';
 
-
-
 const ProjectSlider: React.FC<{ projects: Project[] }> = ({ projects }) => {
   return (
     <div className={styles.sliderContainer}>
+      <h2 className={styles.sectionTitle}>My Projects</h2>
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
         coverflowEffect={{
-          rotate: 50,
+          rotate: 20,
           stretch: 0,
           depth: 100,
           modifier: 1,

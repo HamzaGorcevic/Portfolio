@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from '../styles/projectCard.module.css';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Code } from 'lucide-react';
 import { Project } from '@/types/project';
 
-
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+  const technologies = project.technologies.split(",").map(tech => tech.trim());
+  
   return (
     <div className={styles.card}>
       <div className={styles.cardImageContainer}>
@@ -16,7 +17,10 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
             loading="lazy"
           />
         ) : (
-          <div className={styles.noImage}>No Preview Available</div>
+          <div className={styles.noImage}>
+            <Code size={30} />
+            <span>No Preview</span>
+          </div>
         )}
       </div>
       <div className={styles.cardDetails}>
@@ -24,7 +28,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         <p className={styles.cardDescription}>{project.description}</p>
         <div className={styles.cardMeta}>
           <div className={styles.cardTech}>
-            {project.technologies.map((tech) => (
+            {technologies.map((tech) => (
               <span key={tech} className={styles.tech}>
                 {tech}
               </span>

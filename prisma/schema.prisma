@@ -20,7 +20,7 @@ model Project {
   image       String
   githubUrl   String
   liveUrl     String?
-  technologies String[]
+  technologies String @default("")
   createdAt   DateTime @default(now())
 }
 

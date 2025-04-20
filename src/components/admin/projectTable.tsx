@@ -21,7 +21,7 @@ export default function ProjectTable({ projects, onDelete, onEdit }:{projects:Pr
                 <td>{project.title}</td>
                 <td className={styles.descriptionCell}>{project.description}</td>
                 <td>
-                  {project.technologies.slice(0, 3).join(', ')}
+                  {project.technologies}
                   {project.technologies.length > 3 && '...'}
                 </td>
                 <td>
