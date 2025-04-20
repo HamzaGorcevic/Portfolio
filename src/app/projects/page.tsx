@@ -3,10 +3,9 @@ import React from 'react'
 import styles from "../../styles/projects.module.css"
 import Link from 'next/link';
 import { getBaseUrl } from '@/lib/baseUrl';
+import { prisma } from '@/lib/prisma';
 const Page = async () => {
-    const baseUrl = getBaseUrl();
-    const req = await fetch(`/api/projects`,{ cache: 'no-store' });
-    const projects = await req.json(); 
+    const projects = await prisma.project.findMany();
   return (
             
     <div className={styles.container}>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from "../../styles/projectForm.module.css";
 import { Project } from '@/types/project';
+import { getBaseUrl } from '@/lib/baseUrl';
 
 const ProjectForm = ({projectData=null, isOpen, onClose}:{projectData?:Project|null, isOpen:boolean, onClose:()=>void}) => {
     const [projectMessage, setProjectMessage] = useState('');
@@ -44,8 +45,8 @@ const ProjectForm = ({projectData=null, isOpen, onClose}:{projectData?:Project|n
 
             const method = projectData ? 'PUT' : 'POST';
             const id = projectData?.id ? projectData.id : null;
-            const baseUrl = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` || 'http://localhost:3000'; // Use your localhost in dev
-            const response = await fetch(`/api/projects/${id || ''}`, {
+            const baseUrl = getBaseUrl()
+            const response = await fetch(`${baseUrl}/api/projects/${id || ''}`, {
                 method: method,
                 body: formData,
             });

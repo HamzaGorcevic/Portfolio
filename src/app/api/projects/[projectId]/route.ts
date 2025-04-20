@@ -1,10 +1,8 @@
 // src/app/api/projects/[projectId]/route.ts
-import { PrismaClient } from "@/generated/prisma";
+import { prisma } from "@/lib/prisma";
 import { BlobServiceClient } from "@azure/storage-blob";
 import { NextResponse, NextRequest } from "next/server";
 import { v4 } from "uuid";
-
-const prisma = new PrismaClient();
 
 const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
 const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME;
