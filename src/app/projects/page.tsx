@@ -3,7 +3,7 @@ import React from 'react'
 import styles from "../../styles/projects.module.css"
 import Link from 'next/link';
 const Page = async () => {
-    const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000'; 
+    const baseUrl = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` || 'http://localhost:3000'; 
     const req = await fetch(`${baseUrl}/api/projects`);
     const projects = await req.json(); 
   return (
