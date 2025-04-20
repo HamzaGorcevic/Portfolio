@@ -22,9 +22,9 @@ interface Params {
 
 export async function PUT(
     req: NextRequest,
-    { params }: { params: Params }
+    { params }: { params:Promise<{projectId:string}> }
 ) {
-    const { projectId } = params;
+    const projectId  = (await params).projectId
 
     if (!projectId) {
         return NextResponse.json({ error: "Project ID is required" }, { status: 400 });
@@ -83,9 +83,9 @@ export async function PUT(
 
 export async function DELETE(
     req: NextRequest,
-    { params }: { params: Params }
+    { params }: { params:Promise<{projectId:string}> }
 ) {
-    const { projectId } = params;
+    const projectId  = (await params).projectId;
 
     if (!projectId) {
         return NextResponse.json({ error: "Project ID is required" }, { status: 400 });
