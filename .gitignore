@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore generated Prisma code with secrets
+/src/generated/prisma/edge.js
