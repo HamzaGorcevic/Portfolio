@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Ignore generated Prisma code with secrets
-/src/generated/prisma/edge.js
+/src/generated
