@@ -1,6 +1,9 @@
 export function getBaseUrl() {
-    return process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`      
-      : 'http://localhost:3000';                 
+  if (typeof window !== "undefined") {
+    return "";
   }
-  
+
+  return process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+}
