@@ -42,7 +42,7 @@ const AdminPage = ({projects}:{projects:Project[]}) => {
   const onDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
-        const response = await fetch(`http://localhost:3000/api/projects/${id}`, {
+        const response = await fetch(`api/projects/${id}`, {
           method: 'DELETE',
         });
         

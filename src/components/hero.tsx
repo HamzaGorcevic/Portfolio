@@ -76,7 +76,7 @@ const Hero = () => {
               View Projects
             </a>
             <a
-              href="/files/HamzaGorcevicWp.pdf"
+              href="/files/resume.pdf"
               download
               className={`${styles.link} ${styles.primaryBtn}`}
             >
