@@ -1,30 +1,27 @@
 :root {
-    /* Main colors */
-    --primary: #2563eb;
-    --primary-light: #3b82f6;
-    --primary-dark: #1d4ed8;
-    
-    /* Neutral colors */
-    --background: #f8fafc;
-    --surface: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    
-    /* Accent colors */
-    --accent-1: #8b5cf6;
-    --accent-2: #ec4899;
-    
-    /* Gradients */
-    --gradient-1: linear-gradient(135deg, var(--primary), var(--accent-1));
-    --gradient-2: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-    
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
-  }
+  --sepia-skin: #9c513d;
+  --antique-brass: #cb8870;
+  --kenyan-copper: #841f09;
+  --chambray: #415e90;
+  --tamarind: #341d14;
+  --mandys-pink: #eebca1;
+  --shingle-fawn: #754d36;
+  --leather: #9d755c;
+  --metallic-bronze: #55311e;
+  
+  --primary: var(--chambray);
+  --primary-hover: #526fa1;
+  --accent: var(--antique-brass);
+  --accent-light: var(--mandys-pink);
+  --background-dark: var(--tamarind);
+  --background-medium: var(--metallic-bronze);
+  --surface: var(--shingle-fawn);
+  --surface-light: var(--leather);
+  --text-primary: var(--mandys-pink);
+  --text-secondary: var(--antique-brass);
+  --text-muted: #a08070;
+  --danger: var(--kenyan-copper);
+  --success: #4a7c59;
+  --border: rgba(238, 188, 161, 0.15);
+  --border-light: rgba(238, 188, 161, 0.25);
+}

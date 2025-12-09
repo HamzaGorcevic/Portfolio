@@ -1,49 +1,50 @@
 .container {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #0A0E17 0%, #0F1726 100%);
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .container::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(1px 1px at 25px 5px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)),
-      radial-gradient(1px 1px at 50px 25px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)),
-      radial-gradient(1px 1px at 125px 20px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)),
-      radial-gradient(2px 2px at 50px 75px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-    background-size: 200px 200px;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .homeButton {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    padding: 10px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    z-index: 2;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  .homeButton:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-  }
-  
+  width: 100%;
+  min-height: 100vh;
+  background: #faf9f7;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(65, 94, 144, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(156, 81, 61, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.homeButton {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: #fff;
+  color: #1a1a1a;
+  padding: 0.875rem 1.5rem;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.homeButton:hover {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}

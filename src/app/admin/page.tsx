@@ -1,15 +1,18 @@
-import AdminPage from '@/components/admin/admin';
-import { getBaseUrl } from '@/lib/baseUrl';
+import AdminDashboard from '@/components/admin/admin';
+import LoginForm from '@/components/admin/loginForm';
 import { prisma } from '@/lib/prisma';
-import React from 'react'
-const  Page = async () => {
-  // const baseUrl = getBaseUrl();
-  //   const req = await fetch(`${baseUrl}/api/projects`,{ cache: 'no-store' });
+import { getSession } from './actions';
+
+const Page = async () => {
+  const isAuthenticated = await getSession();
+  
+  if (!isAuthenticated) {
+    return <LoginForm />;
+  }
+  
   const projects = await prisma.project.findMany();
   
-  return (
-    <AdminPage projects={projects}/>
-  )
-}
+  return <AdminDashboard projects={projects} />;
+};
 
-export default Page
+export default Page;

@@ -12,7 +12,7 @@ const Hero = () => {
         <div className={styles.profileSection}>
           <div className={styles.imageContainer}>
             <div className={styles.imageFrame}>
-              <Image
+              <img
                 src="/hamza.jpg"
                 alt="Hamza Gorcevic"
                 width={220}

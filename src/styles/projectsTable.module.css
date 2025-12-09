@@ -1,101 +1,191 @@
-.table-container {
-    overflow-x: auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin: 20px 0;
-  }
-  
+.tableContainer {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(26, 26, 26, 0.06);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.table thead {
+  background: #faf9f7;
+}
+
+.table th {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+}
+
+.table td {
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.04);
+  vertical-align: middle;
+}
+
+.table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background: #faf9f7;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.projectImage {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.projectImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.titleCell {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.descriptionCell {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+}
+
+.techBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.techBadge {
+  padding: 0.3rem 0.625rem;
+  background: #f5f4f2;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.techBadge:hover {
+  background: var(--chambray);
+  color: #fff;
+}
+
+.linkButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tableLink {
+  color: var(--chambray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  background: #f0f4f8;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.tableLink:hover {
+  background: var(--chambray);
+  color: #fff;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buttonEdit,
+.buttonDelete {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonEdit {
+  background: #f0f4f8;
+  color: var(--chambray);
+}
+
+.buttonEdit:hover {
+  background: var(--chambray);
+  color: #fff;
+}
+
+.buttonDelete {
+  background: #fef2f2;
+  color: #dc3545;
+}
+
+.buttonDelete:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #999;
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
   .table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px;
+    font-size: 0.85rem;
   }
-  
-  .table thead {
-    background-color: #f8f9fa;
-  }
-  
-  .table th {
-    text-align: left;
-    padding: 14px 16px;
-    font-weight: 600;
-    color: #444;
-    font-size: 14px;
-    border-bottom: 2px solid #e9ecef;
-  }
-  
+
+  .table th,
   .table td {
-    padding: 12px 16px;
-    font-size: 14px;
-    color: #333;
-    border-bottom: 1px solid #e9ecef;
+    padding: 0.875rem 1rem;
   }
-  
-  .table tbody tr:hover {
-    background-color: #f8f9fa;
+
+  .projectImage {
+    width: 48px;
+    height: 48px;
   }
-  
-  .table tbody tr:last-child td {
-    border-bottom: none;
+
+  .buttonEdit,
+  .buttonDelete {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
   }
-  
-  .action-buttons {
-    display: flex;
-    gap: 8px;
+
+  .descriptionCell {
+    max-width: 150px;
   }
-  
-  .button-edit, .button-delete {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .button-edit {
-    background-color: #0066cc;
-    color: white;
-  }
-  
-  .button-edit:hover {
-    background-color: #0052a3;
-  }
-  
-  .button-delete {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .button-delete:hover {
-    background-color: #bb2d3b;
-  }
-  
-  .description-cell {
-    max-width: 300px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .table {
-      font-size: 13px;
-    }
-    
-    .table th, .table td {
-      padding: 10px 12px;
-    }
-    
-    .button-edit, .button-delete {
-      padding: 4px 8px;
-      font-size: 12px;
-    }
-    
-    .description-cell {
-      max-width: 200px;
-    }
-  }
+}
