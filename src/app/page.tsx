@@ -1,21 +1,11 @@
-import Head from 'next/head';
 import Hero from '@/components/hero';
+import About from '@/components/about';
 
-export default async function Home() {
-
-  
+export default function Home() {
   return (
-    <div >
-      <Head>
-        <title>Hamza Gorcevic - Portfolio</title>
-        <meta name="description" content="Hamza Gorcevic's portfolio website" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <Hero />
-
-      </main>
-    </div>
+    <main>
+      <Hero />
+      <About />
+    </main>
   );
 }

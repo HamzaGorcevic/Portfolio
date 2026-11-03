@@ -12,11 +12,13 @@ const Hero = () => {
         <div className={styles.profileSection}>
           <div className={styles.imageContainer}>
             <div className={styles.imageFrame}>
-              <img
+              <Image
                 src="/hamza.jpg"
-                alt="Hamza Gorcevic"
-                width={220}
-                height={220}
+                alt="Hamza Gorcevic, software engineer and Node.js / React developer"
+                width={340}
+                height={340}
+                priority
+                sizes="(max-width: 480px) 240px, (max-width: 768px) 280px, 340px"
                 className={styles.profileImage}
               />
             </div>
@@ -28,7 +30,7 @@ const Hero = () => {
             <div className={styles.cosmicText}>Developer</div>
           </div>
           
-          <p className={styles.title}>Full Stack Developer</p>
+          <p className={styles.title}>Software Engineer · Node.js & React · AI Automation</p>
         </div>
         
         <div className={styles.linksContainer}>
