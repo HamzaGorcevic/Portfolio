@@ -1,6 +1,7 @@
 import styles from '../styles/hero.module.css';
 import Image from 'next/image';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaFileDownload } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaFileDownload, FaPen } from 'react-icons/fa';
 
 const Hero = () => {
   return (
@@ -78,6 +79,10 @@ const Hero = () => {
               <FaFileDownload className={styles.icon} />
               Download Resume
             </a>
+            <Link href="/blog" className={styles.link}>
+              <FaPen className={styles.icon} />
+              Blog
+            </Link>
           </div>
         </div>
       </div>

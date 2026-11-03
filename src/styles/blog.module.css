@@ -1,0 +1,188 @@
+.page {
+  background: #faf9f7;
+  min-height: 100vh;
+  padding: 3rem 2rem 6rem;
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.crumbs {
+  font-size: 0.9rem;
+  color: #6a6a6a;
+  margin-bottom: 2.5rem;
+}
+
+.crumbs a {
+  color: var(--chambray);
+  text-decoration: none;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #1a1a1a;
+  margin: 0 0 1rem;
+}
+
+.intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #3a3a3a;
+  margin: 0 0 3rem;
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: var(--sepia-skin);
+  margin: 0 0 1rem;
+}
+
+.meta a {
+  color: inherit;
+}
+
+.postList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.postItem {
+  background: #fff;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  border-radius: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.postItem:hover {
+  border-color: var(--chambray);
+}
+
+.postLink {
+  display: block;
+  padding: 1.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.postTitle {
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: #1a1a1a;
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.postDescription {
+  margin: 0;
+  line-height: 1.65;
+  color: #4a4a4a;
+}
+
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tags li {
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid rgba(65, 94, 144, 0.25);
+  color: var(--chambray);
+  font-size: 0.8rem;
+}
+
+.prose {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #2a2a2a;
+}
+
+.prose h2 {
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+  margin: 2.75rem 0 0.75rem;
+  color: #1a1a1a;
+}
+
+.prose h3 {
+  font-size: 1.2rem;
+  margin: 2rem 0 0.5rem;
+  color: #1a1a1a;
+}
+
+.prose a {
+  color: var(--chambray);
+}
+
+.prose code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+  background: rgba(65, 94, 144, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+.prose pre {
+  background: #1a1a1a;
+  color: #f2f2f2;
+  padding: 1.25rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 3px solid var(--antique-brass);
+  color: #4a4a4a;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4rem;
+}
+
+.prose li {
+  margin: 0.35rem 0;
+}
+
+.footer {
+  margin-top: 4rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  line-height: 1.7;
+}
+
+.footer a {
+  color: var(--chambray);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 2rem 1rem 4rem;
+  }
+}
