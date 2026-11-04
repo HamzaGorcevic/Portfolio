@@ -36,6 +36,12 @@ const toInput = (p: AdminPost | null): BlogInput => ({
   publishedAt: (p ? new Date(p.publishedAt) : new Date()).toISOString().slice(0, 10),
 });
 
+// Next 16 serves a revalidated page stale once while it rebuilds. Requesting the pages
+// right after a save triggers that rebuild, so "View live" shows the new version.
+const warm = (...paths: string[]) => {
+  for (const path of paths) fetch(path, { cache: 'no-store' }).catch(() => {});
+};
+
 const BlogManager = ({ posts }: { posts: AdminPost[] }) => {
   const router = useRouter();
   const [editing, setEditing] = useState<BlogInput | null>(null);
@@ -73,7 +79,9 @@ const BlogManager = ({ posts }: { posts: AdminPost[] }) => {
         setMessage({ ok: false, text: res.error });
         return;
       }
-      setEditing({ ...input, id: res.id, slug: input.slug.trim().toLowerCase() });
+      const slug = input.slug.trim().toLowerCase();
+      warm('/blog', `/blog/${slug}`, '/sitemap.xml');
+      setEditing({ ...input, id: res.id, slug });
       setSlugTouched(true);
       setMessage({ ok: true, text: input.published ? 'Saved. The post is live.' : 'Saved as a draft.' });
       router.refresh();
@@ -84,6 +92,7 @@ const BlogManager = ({ posts }: { posts: AdminPost[] }) => {
     if (!window.confirm(`Delete "${p.title}"? This can't be undone.`)) return;
     startTransition(async () => {
       const res = await deleteBlogPost(p.id);
+      if (res.ok) warm('/blog', `/blog/${p.slug}`, '/sitemap.xml');
       setMessage(res.ok ? { ok: true, text: 'Post deleted.' } : { ok: false, text: res.error });
       router.refresh();
     });
