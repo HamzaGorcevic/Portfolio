@@ -1,0 +1,141 @@
+.empty {
+  color: #666;
+  padding: 1rem 0;
+}
+
+.slug {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.2rem;
+}
+
+.live,
+.draft {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.live {
+  background: rgba(74, 124, 89, 0.12);
+  color: #4a7c59;
+}
+
+.draft {
+  background: rgba(26, 26, 26, 0.06);
+  color: #666;
+}
+
+.rowActions,
+.headerActions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.field em {
+  font-style: normal;
+  color: #888;
+  font-weight: 400;
+}
+
+.field small {
+  font-weight: 400;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.editorTabs {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.editorTab,
+.editorTabActive {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.editorTabActive {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.hint {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.content {
+  min-height: 520px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.preview {
+  min-height: 520px;
+  padding: 1.5rem;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  border-radius: 12px;
+  background: #fff;
+  line-height: 1.75;
+}
+
+.preview pre {
+  background: #1a1a1a;
+  color: #f2f2f2;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .hint {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.field textarea {
+  font-family: inherit;
+  resize: vertical;
+}

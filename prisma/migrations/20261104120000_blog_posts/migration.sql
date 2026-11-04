@@ -1,0 +1,14 @@
+-- Blog posts: slug for URLs, SEO fields, drafts.
+ALTER TABLE "Blog" ADD COLUMN "slug" TEXT;
+UPDATE "Blog" SET "slug" = 'post-' || "id" WHERE "slug" IS NULL;
+ALTER TABLE "Blog" ALTER COLUMN "slug" SET NOT NULL;
+
+ALTER TABLE "Blog"
+  ADD COLUMN "description" TEXT NOT NULL DEFAULT '',
+  ADD COLUMN "tags" TEXT NOT NULL DEFAULT '',
+  ADD COLUMN "image" TEXT,
+  ADD COLUMN "published" BOOLEAN NOT NULL DEFAULT false,
+  ADD COLUMN "publishedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  ADD COLUMN "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+CREATE UNIQUE INDEX "Blog_slug_key" ON "Blog"("slug");

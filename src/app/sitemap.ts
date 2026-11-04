@@ -2,8 +2,10 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site";
 import { getAllPosts } from "@/lib/posts";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts();
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllPosts().catch(() => []);
 
   return [
     {
@@ -20,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...posts.map((p) => ({
       url: `${siteUrl}/blog/${p.slug}`,
-      lastModified: new Date(p.date),
+      lastModified: new Date(p.updated),
       changeFrequency: "yearly" as const,
       priority: 0.7,
     })),

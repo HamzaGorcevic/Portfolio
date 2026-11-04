@@ -3,6 +3,9 @@ import Link from "next/link";
 import styles from "@/styles/blog.module.css";
 import { formatDate, getAllPosts } from "@/lib/posts";
 
+// Pages are cached and refreshed when a post is saved in /admin.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Blog | Hamza Gorcevic",
   description:
@@ -11,8 +14,8 @@ export const metadata: Metadata = {
   openGraph: { url: "/blog", title: "Blog | Hamza Gorcevic" },
 };
 
-export default function BlogIndex() {
-  const posts = getAllPosts();
+export default async function BlogIndex() {
+  const posts = await getAllPosts();
 
   return (
     <main className={styles.page}>
@@ -25,6 +28,8 @@ export default function BlogIndex() {
           Notes on AI agents, automation and full-stack JavaScript, mostly about things I built
           and what I learned building them.
         </p>
+
+        {posts.length === 0 && <p className={styles.intro}>The first post is on its way.</p>}
 
         <ul className={styles.postList}>
           {posts.map((p) => (

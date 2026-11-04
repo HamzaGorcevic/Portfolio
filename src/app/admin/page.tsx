@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 import { getSession } from './actions';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 const Page = async () => {
@@ -13,9 +15,12 @@ const Page = async () => {
     return <LoginForm />;
   }
   
-  const projects = await prisma.project.findMany();
-  
-  return <AdminDashboard projects={projects} />;
+  const [projects, posts] = await Promise.all([
+    prisma.project.findMany(),
+    prisma.blog.findMany({ orderBy: { publishedAt: 'desc' } }),
+  ]);
+
+  return <AdminDashboard projects={projects} posts={posts} />;
 };
 
 export default Page;

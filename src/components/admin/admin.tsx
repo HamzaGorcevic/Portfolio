@@ -4,16 +4,17 @@ import styles from '../../styles/admin.module.css';
 import { Project } from '@/types/project';
 import ProjectForm from './projectForm';
 import ProjectTable from './projectTable';
+import BlogManager, { type AdminPost } from './blogManager';
 import { logout } from '@/app/admin/actions';
 import { useRouter } from 'next/navigation';
-import { FaUpload, FaCheck, FaFilePdf, FaImage, FaFolderOpen, FaSignOutAlt, FaPlus } from 'react-icons/fa';
+import { FaUpload, FaCheck, FaFilePdf, FaImage, FaFolderOpen, FaSignOutAlt, FaPlus, FaPen } from 'react-icons/fa';
 
-type TabType = 'projects' | 'profile' | 'resume';
+type TabType = 'blog' | 'projects' | 'profile' | 'resume';
 
-const AdminDashboard = ({projects}:{projects:Project[]}) => {
+const AdminDashboard = ({projects, posts}:{projects:Project[]; posts:AdminPost[]}) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<TabType>('projects');
+  const [activeTab, setActiveTab] = useState<TabType>('blog');
   const router = useRouter();
   
   // Profile upload state
@@ -143,6 +144,13 @@ const AdminDashboard = ({projects}:{projects:Project[]}) => {
       {/* Tabs */}
       <div className={styles.tabContainer}>
         <button 
+          className={`${styles.tab} ${activeTab === 'blog' ? styles.tabActive : ''}`}
+          onClick={() => setActiveTab('blog')}
+        >
+          <FaPen style={{ marginRight: '0.5rem' }} />
+          Blog
+        </button>
+        <button 
           className={`${styles.tab} ${activeTab === 'projects' ? styles.tabActive : ''}`}
           onClick={() => setActiveTab('projects')}
         >
@@ -167,6 +175,8 @@ const AdminDashboard = ({projects}:{projects:Project[]}) => {
       
       {/* Content */}
       <div className={styles.dashboard}>
+        {activeTab === 'blog' && <BlogManager posts={posts} />}
+
         {/* Projects Tab */}
         {activeTab === 'projects' && (
           <div className={styles.card}>

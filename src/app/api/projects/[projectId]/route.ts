@@ -1,5 +1,6 @@
 // src/app/api/projects/[projectId]/route.ts
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/requireAdmin";
 import { BlobServiceClient } from "@azure/storage-blob";
 import { NextResponse, NextRequest } from "next/server";
 import { v4 } from "uuid";
@@ -22,6 +23,9 @@ export async function PUT(
     req: NextRequest,
     { params }: { params:Promise<{projectId:string}> }
 ) {
+    const denied = await requireAdmin();
+    if (denied) return denied;
+
     const projectId  = (await params).projectId
 
     if (!projectId) {
@@ -83,6 +87,9 @@ export async function DELETE(
     req: NextRequest,
     { params }: { params:Promise<{projectId:string}> }
 ) {
+    const denied = await requireAdmin();
+    if (denied) return denied;
+
     const projectId  = (await params).projectId;
 
     if (!projectId) {

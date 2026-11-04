@@ -2,20 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "@/styles/blog.module.css";
-import { formatDate, getAllPosts, getPost } from "@/lib/posts";
+import { formatDate, getPost } from "@/lib/posts";
 import { siteUrl } from "@/lib/site";
 
-export const dynamicParams = false;
+// Pages are rendered on first visit, cached, and refreshed when a post is saved in /admin.
+export const revalidate = 3600;
 
-export function generateStaticParams() {
-  return getAllPosts().map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  return [];
 }
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPost((await params).slug);
+  const post = await getPost((await params).slug);
   if (!post) return {};
+  const image = post.image || "/hamza.jpg";
 
   return {
     title: `${post.title} | Hamza Gorcevic`,
@@ -28,15 +30,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.description,
       publishedTime: post.date,
+      modifiedTime: post.updated,
       authors: ["Hamza Gorcevic"],
       tags: post.tags,
+      images: [{ url: image, alt: post.title }],
     },
-    twitter: { title: post.title, description: post.description },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [image],
+    },
   };
 }
 
 export default async function BlogPost({ params }: Props) {
-  const post = getPost((await params).slug);
+  const post = await getPost((await params).slug);
   if (!post) notFound();
 
   const jsonLd = {
@@ -45,10 +54,11 @@ export default async function BlogPost({ params }: Props) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.updated,
     keywords: post.tags.join(", "),
     url: `${siteUrl}/blog/${post.slug}`,
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
-    image: `${siteUrl}/hamza.jpg`,
+    image: post.image || `${siteUrl}/hamza.jpg`,
     author: { "@id": `${siteUrl}/#person`, "@type": "Person", name: "Hamza Gorcevic", url: siteUrl },
   };
 

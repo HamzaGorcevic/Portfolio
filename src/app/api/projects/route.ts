@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/requireAdmin";
 import { PrismaClient } from "@/generated/prisma";
 import { BlobServiceClient, ContainerClient } from "@azure/storage-blob";
 import { error } from "console";
@@ -21,6 +22,9 @@ if(!blocContainer){
 }
 
 export async function POST(req:NextRequest) {
+    const denied = await requireAdmin();
+    if (denied) return denied;
+
     const formData = await req.formData();
     const title = formData.get("title") as string;
     const description = formData.get('description') as string;
